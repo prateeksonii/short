@@ -24,6 +24,13 @@ const nextApiHandler: NextApiHandler = async (
     });
   }
 
+  res.setHeader("Content-Type", "application/json");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Cache-Control",
+    "s-maxage=10000000000, stale-while-revalidate"
+  );
+
   return res.json(shortLink);
 };
 
